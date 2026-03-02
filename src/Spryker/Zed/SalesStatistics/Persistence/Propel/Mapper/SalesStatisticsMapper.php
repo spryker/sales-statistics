@@ -17,11 +17,6 @@ class SalesStatisticsMapper
      */
     public const DECIMAL = 100;
 
-    /**
-     * @param array $statistic
-     *
-     * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
-     */
     public function mapCountStatisticToTransfer(array $statistic): ChartDataTraceTransfer
     {
         $chartDataTraceTransfer = new ChartDataTraceTransfer();
@@ -34,11 +29,6 @@ class SalesStatisticsMapper
         return $chartDataTraceTransfer;
     }
 
-    /**
-     * @param array $statistic
-     *
-     * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
-     */
     public function mapStatusOrderStatisticToTransfer(array $statistic): ChartDataTraceTransfer
     {
         $chartDataTraceTransfer = new ChartDataTraceTransfer();
@@ -52,11 +42,6 @@ class SalesStatisticsMapper
         return $chartDataTraceTransfer;
     }
 
-    /**
-     * @param array $statistic
-     *
-     * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
-     */
     public function mapTopOrderStatisticToTransfer(array $statistic): ChartDataTraceTransfer
     {
         $chartDataTraceTransfer = new ChartDataTraceTransfer();

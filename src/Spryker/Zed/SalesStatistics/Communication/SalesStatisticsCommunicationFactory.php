@@ -18,9 +18,6 @@ use Twig\Environment;
  */
 class SalesStatisticsCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Twig\Environment
-     */
     public function getTwigEnvironment(): Environment
     {
         return $this->getProvidedDependency(SalesStatisticsDependencyProvider::RENDERER);

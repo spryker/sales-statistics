@@ -17,37 +17,21 @@ class Reader implements ReaderInterface
      */
     protected $repository;
 
-    /**
-     * @param \Spryker\Zed\SalesStatistics\Persistence\SalesStatisticsRepositoryInterface $repository
-     */
     public function __construct(SalesStatisticsRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
 
-    /**
-     * @param int $days
-     *
-     * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
-     */
     public function getOrderCountStatisticByDays(int $days): ChartDataTraceTransfer
     {
         return $this->repository->getOrderCountStatisticByDays($days);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
-     */
     public function getStatusOrderStatistic(): ChartDataTraceTransfer
     {
         return $this->repository->getStatusOrderStatistic();
     }
 
-    /**
-     * @param int $countProduct
-     *
-     * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
-     */
     public function getTopOrderStatistic(int $countProduct): ChartDataTraceTransfer
     {
         return $this->repository->getTopOrderStatistic($countProduct);

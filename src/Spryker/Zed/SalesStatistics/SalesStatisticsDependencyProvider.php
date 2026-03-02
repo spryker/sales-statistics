@@ -40,11 +40,6 @@ class SalesStatisticsDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const SERVICE_TWIG = 'twig';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -67,11 +62,6 @@ class SalesStatisticsDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addSalesOrderQuery(Container $container): Container
     {
         $container->set(static::PROPEL_SALES_ORDER_QUERY, $container->factory(function () {
@@ -81,11 +71,6 @@ class SalesStatisticsDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addSalesOrderItemQuery(Container $container): Container
     {
         $container->set(static::PROPEL_SALES_ORDER_ITEM_QUERY, $container->factory(function () {
@@ -95,11 +80,6 @@ class SalesStatisticsDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addRenderer(Container $container): Container
     {
         $container->set(static::RENDERER, function (ContainerInterface $container) {

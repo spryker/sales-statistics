@@ -19,25 +19,16 @@ use Spryker\Zed\SalesStatistics\SalesStatisticsDependencyProvider;
  */
 class SalesStatisticsPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderQuery
-     */
     public function createSalesOrderQuery(): SpySalesOrderQuery
     {
         return $this->getProvidedDependency(SalesStatisticsDependencyProvider::PROPEL_SALES_ORDER_QUERY);
     }
 
-    /**
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItemQuery
-     */
     public function createSalesOrderItemQuery(): SpySalesOrderItemQuery
     {
         return $this->getProvidedDependency(SalesStatisticsDependencyProvider::PROPEL_SALES_ORDER_ITEM_QUERY);
     }
 
-    /**
-     * @return \Spryker\Zed\SalesStatistics\Persistence\Propel\Mapper\SalesStatisticsMapper
-     */
     public function createSalesStatisticsMapper(): SalesStatisticsMapper
     {
         return new SalesStatisticsMapper();

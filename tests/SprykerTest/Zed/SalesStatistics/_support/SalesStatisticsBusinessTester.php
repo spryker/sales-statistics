@@ -37,9 +37,6 @@ class SalesStatisticsBusinessTester extends Actor
      */
     public const ITEM_NAME = 'test1';
 
-    /**
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrder
-     */
     public function haveOrderWithOneItem(): SpySalesOrder
     {
         return $this->haveSalesOrderEntity([
@@ -47,9 +44,6 @@ class SalesStatisticsBusinessTester extends Actor
         ]);
     }
 
-    /**
-     * @return \Orm\Zed\Sales\Persistence\SpySalesOrder
-     */
     public function haveOrderWithTwoItems(): SpySalesOrder
     {
         return $this->haveSalesOrderEntity([

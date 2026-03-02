@@ -30,9 +30,6 @@ class SalesStatisticsFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testOrderStatisticByCountDay(): void
     {
         $this->markTestIncomplete('Test code and code behind MUST be fixed.');
@@ -55,9 +52,6 @@ class SalesStatisticsFacadeTest extends Unit
         $this->assertSame($spySalesOrder->getCreatedAt('Y-m-d'), $latestLabel);
     }
 
-    /**
-     * @return void
-     */
     public function testStatusOrderStatistic(): void
     {
         $this->markTestSkipped('Test code and code behind MUST be fixed.');
@@ -84,9 +78,6 @@ class SalesStatisticsFacadeTest extends Unit
         $this->assertSame(BusinessHelper::DEFAULT_ITEM_STATE, $latestLabel);
     }
 
-    /**
-     * @return void
-     */
     public function testTopOrderStatistic(): void
     {
         $this->markTestIncomplete('Test code and code behind MUST be fixed.');

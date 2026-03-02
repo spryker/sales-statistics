@@ -17,9 +17,6 @@ use Spryker\Zed\SalesStatistics\Business\Reader\ReaderInterface;
  */
 class SalesStatisticsBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\SalesStatistics\Business\Reader\ReaderInterface
-     */
     public function createReader(): ReaderInterface
     {
         return new Reader($this->getRepository());
