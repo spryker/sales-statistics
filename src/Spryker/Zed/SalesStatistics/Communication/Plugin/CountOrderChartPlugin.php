@@ -21,16 +21,22 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 class CountOrderChartPlugin extends AbstractPlugin implements ChartPluginInterface, DashboardPluginInterface
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const NAME = 'count-orders';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const TITLE = 'Count orders';
 
     /**
+     * @api
+     *
      * @var int
      */
     public const DAYS = 7;
