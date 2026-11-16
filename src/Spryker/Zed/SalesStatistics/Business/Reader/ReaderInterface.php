@@ -13,7 +13,11 @@ interface ReaderInterface
 {
     public function getOrderCountStatisticByDays(int $days): ChartDataTraceTransfer;
 
+    public function getDailyOrderCountStatistic(int $days): ChartDataTraceTransfer;
+
     public function getStatusOrderStatistic(): ChartDataTraceTransfer;
+
+    public function getOrderItemCountByStatusStatistic(): ChartDataTraceTransfer;
 
     public function getTopOrderStatistic(int $countProduct): ChartDataTraceTransfer;
 }

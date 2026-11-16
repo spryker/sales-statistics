@@ -58,11 +58,25 @@ class SalesStatisticsRepository extends AbstractRepository implements SalesStati
         return $this->getFactory()->createSalesStatisticsMapper()->mapCountStatisticToTransfer($result);
     }
 
+    public function getOrderCountStatisticFromDate(string $fromDate): ChartDataTraceTransfer
+    {
+        $result = $this->getDataOrderCountStatisticByDays($fromDate);
+
+        return $this->getFactory()->createSalesStatisticsMapper()->mapCountStatisticToTransfer($result);
+    }
+
     public function getStatusOrderStatistic(): ChartDataTraceTransfer
     {
         $result = $this->getDataStatusOrderStatistic();
 
         return $this->getFactory()->createSalesStatisticsMapper()->mapStatusOrderStatisticToTransfer($result);
+    }
+
+    public function getOrderItemCountByStatusStatistic(): ChartDataTraceTransfer
+    {
+        $result = $this->getDataOrderItemCountByStatusStatistic();
+
+        return $this->getFactory()->createSalesStatisticsMapper()->mapOrderItemCountByStatusStatisticToTransfer($result);
     }
 
     public function getTopOrderStatistic(int $countProduct): ChartDataTraceTransfer
@@ -101,6 +115,27 @@ class SalesStatisticsRepository extends AbstractRepository implements SalesStati
             ->find();
 
         return $orderStatisticData->toArray();
+    }
+
+    /**
+     * @module Sales
+     * @module Oms
+     *
+     * @return array<array<string, mixed>>
+     */
+    protected function getDataOrderItemCountByStatusStatistic(): array
+    {
+        /** @var \Propel\Runtime\Collection\ArrayCollection $orderItemCountByStatusData */
+        $orderItemCountByStatusData = $this->getFactory()->createSalesOrderItemQuery()
+            ->joinWithState()
+            ->select([static::STATUS_NAME, static::COUNT])
+            ->withColumn(SpyOmsOrderItemStateTableMap::COL_NAME, static::STATUS_NAME)
+            ->withColumn(sprintf('COUNT(%s)', SpySalesOrderItemTableMap::COL_ID_SALES_ORDER_ITEM), static::COUNT)
+            ->groupBy(SpyOmsOrderItemStateTableMap::COL_ID_OMS_ORDER_ITEM_STATE)
+            ->orderBy(static::COUNT, Criteria::DESC)
+            ->find();
+
+        return $orderItemCountByStatusData->toArray();
     }
 
     /**
@@ -147,15 +182,12 @@ class SalesStatisticsRepository extends AbstractRepository implements SalesStati
      */
     protected function getDataOrderCountStatisticByDays($date): array
     {
-        /** @var literal-string $where */
-        $where = sprintf("%s>='%s'", SpySalesOrderTableMap::COL_CREATED_AT, $date);
-
         /** @var \Propel\Runtime\Collection\ArrayCollection $orderCountStatisticData */
         $orderCountStatisticData = $this->getFactory()->createSalesOrderQuery()
             ->select([static::DATE, static::COUNT])
             ->withColumn('COUNT(' . SpySalesOrderTableMap::COL_ID_SALES_ORDER . ')', static::COUNT)
             ->withColumn('DATE(' . SpySalesOrderTableMap::COL_CREATED_AT . ')', static::DATE)
-            ->where($where)
+            ->filterByCreatedAt($date, Criteria::GREATER_EQUAL)
             ->groupBy(static::DATE)
             ->find();
 

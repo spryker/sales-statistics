@@ -11,4 +11,16 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class SalesStatisticsConfig extends AbstractBundleConfig
 {
+    protected const int DAILY_ORDER_COUNT_CHART_DAYS = 7;
+
+    /**
+     * Specification:
+     * - Returns the number of calendar days, today included, that `DailyOrderCountChartPlugin` shows.
+     *
+     * @api
+     */
+    public function getDailyOrderCountChartDays(): int
+    {
+        return static::DAILY_ORDER_COUNT_CHART_DAYS;
+    }
 }

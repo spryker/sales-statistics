@@ -42,6 +42,21 @@ class SalesStatisticsMapper
         return $chartDataTraceTransfer;
     }
 
+    /**
+     * @param array<array<string, mixed>> $statistic
+     */
+    public function mapOrderItemCountByStatusStatisticToTransfer(array $statistic): ChartDataTraceTransfer
+    {
+        $chartDataTraceTransfer = new ChartDataTraceTransfer();
+
+        foreach ($statistic as $statisticItem) {
+            $chartDataTraceTransfer->addLabel($statisticItem[SalesStatisticsRepository::STATUS_NAME]);
+            $chartDataTraceTransfer->addValue((int)$statisticItem[SalesStatisticsRepository::COUNT]);
+        }
+
+        return $chartDataTraceTransfer;
+    }
+
     public function mapTopOrderStatisticToTransfer(array $statistic): ChartDataTraceTransfer
     {
         $chartDataTraceTransfer = new ChartDataTraceTransfer();

@@ -27,6 +27,8 @@ class TopOrdersChartPlugin extends AbstractPlugin implements ChartPluginInterfac
      */
     public const COUNT_PRODUCT = 10;
 
+    protected const string CHART_VIEW = 'ranking';
+
     /**
      * @api
      *
@@ -81,6 +83,7 @@ class TopOrdersChartPlugin extends AbstractPlugin implements ChartPluginInterfac
         );
         $data->setKey($dataIdentifier);
         $data->setTitle(static::TITLE);
+        $data->setView(static::CHART_VIEW);
 
         return $data;
     }

@@ -13,7 +13,11 @@ interface SalesStatisticsRepositoryInterface
 {
     public function getOrderCountStatisticByDays(int $days): ChartDataTraceTransfer;
 
+    public function getOrderCountStatisticFromDate(string $fromDate): ChartDataTraceTransfer;
+
     public function getStatusOrderStatistic(): ChartDataTraceTransfer;
+
+    public function getOrderItemCountByStatusStatistic(): ChartDataTraceTransfer;
 
     public function getTopOrderStatistic(int $countProduct): ChartDataTraceTransfer;
 }

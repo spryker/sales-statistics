@@ -12,6 +12,7 @@
         <property name="traces" type="ChartDataTrace[]" singular="trace"/>
         <property name="key" type="string"/>
         <property name="title" type="string"/>
+        <property name="view" type="string"/>
     </transfer>
 
 </transfers>
